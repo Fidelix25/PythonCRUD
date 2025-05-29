@@ -63,7 +63,7 @@ def delete_a_product(product_id: int, db: Session = Depends(get_db)):
 def update_a_product(
     product_id: int, product: ProductUpdate, db: Session = Depends(get_db)
 ):
-    product_db = update_product(product_id=product_id, product=product, db=db)
+    product_db = update_product(db=db, product_id=product_id, product=product)
     if product_db is None:
         raise HTTPException(status_code=404, detail="Product does not exist")
     return product_db
